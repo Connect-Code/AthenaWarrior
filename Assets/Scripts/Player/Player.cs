@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int GetHealth() {
+        return currentHealth;
+    }
+
     public void TakeDamage (int damage)
     {
         currentHealth -= damage;
