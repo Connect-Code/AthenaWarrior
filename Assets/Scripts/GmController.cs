@@ -36,7 +36,7 @@ public class GmController : MonoBehaviour
 
         if (currentTime <= 0) {
             Defeat();
-        } else {
+        } else if (boss.GetCurrentHealth() > 0) {
             // Decrease time on UI bar
             currentTime -= Time.deltaTime;
             timer.SetProgress(currentTime);
@@ -45,9 +45,13 @@ public class GmController : MonoBehaviour
 
     public void AnswerIsCorrect(int value) {
         if (problems[currentMathProblemId].answer == value) {
-            // Show next math problem
-            currentMathProblemId += 1;
-            ChangeUIProblem();
+            if (currentMathProblemId < problems.Length-1) {
+                // Show next math problem
+                currentMathProblemId += 1;
+                ChangeUIProblem();
+            } else {
+                Victory();
+            }
 
             // Reset timer
             currentTime = maxTimer;
@@ -57,7 +61,7 @@ public class GmController : MonoBehaviour
             currentPower += 10;
             power.SetProgress(currentPower);
 
-            boss.TakeDamage(183);
+            boss.TakeDamage(75);
         } else {
             Debug.Log("Resposta ERRADA");
             player.TakeDamage(20);
@@ -71,6 +75,10 @@ public class GmController : MonoBehaviour
     public void ChangeUIProblem() {
         // Change UI math problem text
         currentMathProblem.text = string.Format("{0:n0}", problems[currentMathProblemId].text);
+    }
+
+    public void Victory() {
+        VictoryUI.SetActive(true);
     }
 
     public void Defeat() {

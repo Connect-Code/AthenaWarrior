@@ -25,6 +25,10 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public int GetCurrentHealth() {
+        return currentHealth;
+    }
+
     public void TakeDamage (int damage)
     {
         currentHealth -= damage;
