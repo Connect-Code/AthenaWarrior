@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4a1424739f8c84382ff27845c51092, type: 3}
   m_Name: 25 % 25
   m_EditorClassIdentifier: 
-  text: 25 % 25
+  text: 25 / 25
   answer: 100
   score: 5

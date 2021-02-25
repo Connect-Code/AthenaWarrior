@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4a1424739f8c84382ff27845c51092, type: 3}
   m_Name: 1 % 2
   m_EditorClassIdentifier: 
-  text: 1 % 2
+  text: 1 / 2
   answer: 50
   score: 10

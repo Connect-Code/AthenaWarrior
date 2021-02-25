@@ -19,10 +19,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
+        
     }
 
     public int GetCurrentHealth() {
@@ -31,8 +28,16 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage (int damage)
     {
+        StartCoroutine(HurtWaiter());
         currentHealth -= damage;
-
         healthBar.SetHealth(currentHealth);
+    }
+
+    IEnumerator HurtWaiter()
+    {
+        GetComponent<BossAnimations>().Hurt();
+        yield return new WaitForSecondsRealtime(0.2f);
+        GetComponent<BossAnimations>().Idle();
+        
     }
 }
